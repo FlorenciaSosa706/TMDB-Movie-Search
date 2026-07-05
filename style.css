@@ -1,0 +1,102 @@
+body {
+  font-family: "Raleway", sans-serif;
+  font-weight: 450;
+}
+
+#results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.movie-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.btn-bv {
+  background-color: #fba7da;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-style: italic;
+  border-radius: 10px;
+
+}
+
+.search-form {
+  
+  display: flex;
+  justify-content: center;  /* centra los elementos horizontalmente */
+  text-align: center;
+  gap: 0.5rem;     
+  padding: 5rem;
+           /* de paso, un poco de espacio entre input y botón */
+}
+#search-input {
+  flex-grow: 0.5;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#prev-btn, #next-btn {
+  background-color: #861157;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-style: italic;
+  border-radius: 10px;
+}
+
+.pagina-info {
+  font-style: italic;
+}
+
+.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+h1 {
+  font-family: "Alfa Slab One", serif;
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-family: "Alfa Slab One", serif;
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  font-weight: 800; /* semi-negrita, ajustable de 100 a 900 */
+}
