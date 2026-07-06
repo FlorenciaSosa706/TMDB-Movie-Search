@@ -62,6 +62,7 @@
     <input type="text" id="search-input" placeholder="Buscar película..." />
     <button type="submit" class="btn-bv">Buscar</button>
   </form>
+
   <div id="filter-bar" class="filter-bar hidden">
     <div class="filter-group">
       <label for="sort-select">Ordenar por</label>
@@ -102,10 +103,17 @@
   </div>
   <div id="results"></div>
 
-  <div id="pagination" class="paginacion">
+  <div id="pagination" class="paginacion hidden">
     <button id="prev-btn">Anterior</button>
     <span id="page-info"></span>
     <button id="next-btn">Siguiente</button>
+  </div>
+
+  <!-- Saludo pantalla principal -->
+  <div id="home-greeting" class="home-greeting">
+    <p class="greeting-sub">Bienvenida de vuelta ✨</p>
+    <h1 class="greeting-title">Hola, <span class="greeting-name">Florencia</span>!</h1>
+    <p class="greeting-hint">¿Qué película querés ver hoy?</p>
   </div>
 
   <footer></footer>

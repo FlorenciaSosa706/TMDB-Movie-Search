@@ -48,8 +48,10 @@ document.querySelectorAll(".nav-link").forEach(link => {
       // Volver a home: limpiar resultados y ocultar filtros
       document.getElementById("results").innerHTML = "";
       document.getElementById("filter-bar").classList.add("hidden");
-      document.getElementById("pagination").style.visibility = "hidden";
+      document.getElementById("pagination").classList.add("hidden");    // ocultar paginación
+      document.getElementById("home-greeting").classList.remove("hidden"); // mostrar saludo
     } else {
+      document.getElementById("home-greeting").classList.add("hidden"); // ocultar saludo
       loadSection(section);
     }
   });
@@ -165,6 +167,7 @@ function updatePaginationUI() {
   document.getElementById("page-info").textContent = `Página ${currentPage} de ${totalPages}`;
   document.getElementById("prev-btn").disabled = currentPage <= 1;
   document.getElementById("next-btn").disabled = currentPage >= totalPages;
+  document.getElementById("pagination").classList.remove("hidden"); // mostrar al tener resultados
 }
 
 async function loadResults() {
@@ -182,6 +185,9 @@ document.getElementById("search-form").addEventListener("submit", (e) => {
   e.preventDefault();
   currentQuery = document.getElementById("search-input").value.trim();
   currentPage = 1;
+  if (currentQuery) {
+    document.getElementById("home-greeting").classList.add("hidden"); // ocultar saludo al buscar
+  }
   loadResults();
 });
 
