@@ -1,32 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
-    
-    <script src="script.js" defer></script>
-    <title>TMDB</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="FlixFlor — Buscador de películas en tiempo real con filtros, géneros y detalle completo. Powered by TMDB.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playwrite+AU+QLD:wght@100..400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="script.js" defer></script>
+  <title>FlixFlor</title>
 </head>
+
 <body>
-    <form id="search-form" class="search-form">
-  <input type="text" id="search-input" placeholder="Buscar película..." />
-  <button type="submit" class="btn-bv">Buscar</button>
-</form>
+  <header id="menu" class="menu">
+    <nav class="navbar">
 
-<div id="results"></div>
+      <!-- Logo -->
+      <a href="#" class="nav-logo">
+        <span class="logo-text">FlixFlor</span>
+      </a>
 
-<div id="pagination" class="paginacion">
-  <button id="prev-btn" >Anterior</button>
-  <span id="page-info" ></span>
-  <button id="next-btn"  >Siguiente</button>
-</div>
+      <!-- Links centrales -->
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active" data-section="home">Inicio</a></li>
+        <li><a href="#" class="nav-link" data-section="popular">Populares</a></li>
+        <li><a href="#" class="nav-link" data-section="top_rated">Top Rated</a></li>
+        <li><a href="#" class="nav-link" data-section="upcoming">Próximos</a></li>
+      </ul>
 
-<footer>
-</footer>
-    
+      <!-- Perfil -->
+      <div class="nav-profile">
+        <button class="profile-btn" id="profile-btn" aria-label="Menú de perfil">
+          <div class="avatar">FL</div>
+          <span class="profile-name">Mi perfil</span>
+          <span class="chevron">▾</span>
+        </button>
+        <div class="profile-dropdown" id="profile-dropdown">
+          <a href="#" class="dropdown-item" data-panel="cuenta">👤 Mi cuenta</a>
+          <a href="#" class="dropdown-item" data-panel="favoritos">❤️ Favoritos</a>
+          <a href="#" class="dropdown-item" data-panel="ajustes">⚙️ Ajustes</a>
+          <hr class="dropdown-divider" />
+          <a href="#" class="dropdown-item dropdown-item--danger">🚪 Cerrar sesión</a>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+
+  <form id="search-form" class="search-form">
+    <input type="text" id="search-input" placeholder="Buscar película..." />
+    <button type="submit" class="btn-bv">Buscar</button>
+  </form>
+  <div id="filter-bar" class="filter-bar hidden">
+    <div class="filter-group">
+      <label for="sort-select">Ordenar por</label>
+      <select id="sort-select">
+        <option value="popularity.desc"> Más populares</option>
+        <option value="vote_average.desc"> Mejor valoradas</option>
+        <option value="release_date.desc"> Más recientes</option>
+        <option value="release_date.asc"> Más antiguas</option>
+        <option value="revenue.desc"> Más taquilleras</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="genre-select">Género</label>
+      <select id="genre-select">
+        <option value="">Todos</option>
+        <option value="28">Acción</option>
+        <option value="35">Comedia</option>
+        <option value="18">Drama</option>
+        <option value="27">Terror</option>
+        <option value="10749">Romance</option>
+        <option value="878">Ciencia Ficción</option>
+        <option value="16">Animación</option>
+        <option value="80">Crimen</option>
+        <option value="99">Documental</option>
+        <option value="14">Fantasía</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="year-select">Año</label>
+      <select id="year-select">
+        <option value="">Todos</option>
+      </select>
+    </div>
+
+    <button id="clear-filters" class="btn-clear">✕ Limpiar</button>
+  </div>
+  <div id="results"></div>
+
+  <div id="pagination" class="paginacion">
+    <button id="prev-btn">Anterior</button>
+    <span id="page-info"></span>
+    <button id="next-btn">Siguiente</button>
+  </div>
+
+  <footer></footer>
+
+  <!-- Modal de detalle -->
+  <div id="movie-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+
+      <div class="modal-body">
+        <div class="modal-poster-wrap">
+          <img id="modal-poster" src="" alt="" class="modal-poster" />
+        </div>
+
+        <div class="modal-info">
+          <div class="modal-genres" id="modal-genres"></div>
+          <h2 id="modal-title" class="modal-movie-title"></h2>
+          <div class="modal-meta" id="modal-meta"></div>
+          <p class="modal-overview" id="modal-overview"></p>
+          <div class="modal-extra" id="modal-extra"></div>
+        </div>
+      </div>
+
+      <div class="modal-loading hidden" id="modal-loading">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>
